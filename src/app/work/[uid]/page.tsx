@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { asText } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { PrismicNextImage } from "@prismicio/next";
 
 type Params = { uid: string };
 
@@ -16,10 +14,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { uid } = await params;
   const client = createClient();
-  const page = await client.getByUID("page", uid).catch(() => notFound());
+  const page = await client.getByUID("work", uid).catch(() => notFound());
 
   return {
-    title: asText(page.data.title),
+    title: page.data.title,
     description: page.data.meta_description,
     openGraph: {
       title: page.data.meta_title ?? undefined,
@@ -31,14 +29,11 @@ export async function generateMetadata({
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
   const client = createClient();
-  const page = await client.getByUID("page", uid).catch(() => notFound());
+  const page = await client.getByUID("work", uid).catch(() => notFound());
 
   return (
     <div className="page">
       <SliceZone slices={page.data.slices} components={components} />
-      <div className="page-img">
-        <PrismicNextImage field={page.data.image}/>
-      </div>
     </div>
   )
 }
@@ -46,7 +41,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 export async function generateStaticParams() {
   const client = createClient();
 
-  const pages = await client.getAllByType("page");
+  const pages = await client.getAllByType("work");
 
   return pages.map((page) => {
     return { uid: page.uid };

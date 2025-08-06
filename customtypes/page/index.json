@@ -22,29 +22,31 @@
           "single": "heading1"
         }
       },
-      "works": {
-        "type": "Group",
+      "image": {
+        "type": "Image",
         "config": {
-          "label": "Works",
-          "repeat": true,
-          "fields": {
-            "work": {
-              "type": "Link",
-              "config": {
-                "label": "Work",
-                "select": "document",
-                "repeat": false,
-                "customtypes": ["work"]
-              }
-            }
-          }
+          "label": "Image",
+          "constraint": {
+            "width": 1080
+          },
+          "thumbnails": []
         }
       },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "image": {
+              "type": "SharedSlice"
+            },
+            "text_block": {
+              "type": "SharedSlice"
+            },
+            "quote": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

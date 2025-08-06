@@ -1,0 +1,31 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"quote": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading3",
+						"content": {
+							"text": "Distant"
+						}
+					}
+				]
+			},
+			"caption": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Reprehenderit fugiat voluptate cupidatat nulla culpa nostrud duis esse. Veniam laborum fugiat id minim ullamco sunt in sunt ut ullamco ea magna amet ad. Deserunt pariatur cillum dolor in sint cupidatat."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

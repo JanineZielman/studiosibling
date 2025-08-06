@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "work",
-  "label": "Work",
+  "id": "coaching",
+  "label": "Coaching",
   "repeatable": true,
   "status": true,
   "json": {
@@ -47,10 +47,10 @@
             "text_block": {
               "type": "SharedSlice"
             },
-            "quote": {
+            "image": {
               "type": "SharedSlice"
             },
-            "image": {
+            "quote": {
               "type": "SharedSlice"
             }
           }

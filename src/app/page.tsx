@@ -9,7 +9,7 @@ import { PrismicNextImage } from "@prismicio/next";
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
-  const page = await client.getByUID("page", "home").catch(() => notFound());
+  const page = await client.getSingle("homepage").catch(() => notFound());
 
   return {
     title: asText(page.data.title),
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() {
   const client = createClient();
-  const page = await client.getByUID("page", "home").catch(() => notFound());
+  const page = await client.getSingle("homepage").catch(() => notFound());
   const works = await client.getAllByType('work')
 
   return (
@@ -31,22 +31,22 @@ export default async function Page() {
       <div className="works">
         {works.map((item,i ) => {
           return(
-            <div className="work" key={`work${i}`}>
+            <a href={`/work/${item.uid}`} className="work" key={`work${i}`}>
               <PrismicNextImage field={item.data.image}/>
               <div className="hover">
                 <PrismicNextImage field={item.data.hover_image}/>
               </div>
-            </div>
+            </a>
           )
         })}
          {works.map((item,i ) => {
           return(
-            <div className="work" key={`work2${i}`}>
+            <a href={`/work/${item.uid}`} className="work" key={`work2${i}`}>
               <PrismicNextImage field={item.data.image}/>
               <div className="hover">
                 <PrismicNextImage field={item.data.hover_image}/>
               </div>
-            </div>
+            </a>
           )
         })}
       </div>

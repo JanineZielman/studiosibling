@@ -24,14 +24,35 @@ body{
   max-height: 100vh;
 }
 
-h1, h2{
+h1, h2, h3{
   font-family: avara;
+}
+
+h1{
+  font-size: 32px;
+}
+
+h2{
+  margin: 0;
+  margin-top: 36px;
+  margin-bottom: -10px;
+  font-size: 32px;
+}
+
+h3{
+  margin-top: 36px;
+  margin-bottom: -10px;
+}
+
+p{
+  line-height: 1.4;
 }
 
 .menu{
   position: fixed;
   top: 14px;
   left: 14px;
+  z-index: 9;
   h1{
     line-height: 1;
     margin: 10px 0 24px 0;
@@ -44,7 +65,14 @@ h1, h2{
     font-family: avara;
     display: block;
   }
-  
+  @media only screen and (max-width: 600px) {
+    nav{
+      position: fixed;
+      right: 14px;
+      top: 24px;
+      left: auto;
+    }
+  } 
 }
 
 .agenda-button{
@@ -68,40 +96,12 @@ h1, h2{
   display: flex;
   flex-wrap: wrap;
   .work{
-    position: relative;
-    transition: all 0.4s ease;
-    width: 33%;
-    height: fit-content;
     img{
       // max-height: 80vh;
       width: 100%;
       height: 100%;
       object-fit: contain;
       object-position: left top;
-    }
-    &:nth-child(3n + 1){
-      img{
-        margin-top: -50vh;
-        transform: scale(0.8);
-      }
-    }
-    &:nth-child(3n + 2){
-      img{
-        margin-top: -30vh;
-        transform: scale(1.3);
-      }
-    }
-    &:nth-child(3n){
-      img{
-        margin-top: 50vh;
-        transform: scale(1);
-        object-position: center right;
-      }
-    }
-    &:nth-child(1){
-      img{
-        margin-top: 10vh;
-      }
     }
     .hover{
       visibility: hidden;
@@ -118,5 +118,127 @@ h1, h2{
         opacity: 1;
       }
     }
+  }
+  @media only screen and (min-width: 600px) {
+    .work{
+      position: relative;
+      transition: all 0.4s ease;
+      width: 33%;
+      height: fit-content;
+      &:nth-child(3n + 1){
+        img{
+          margin-top: -50vh;
+          transform: scale(0.8);
+        }
+      }
+      &:nth-child(3n + 2){
+        img{
+          margin-top: -30vh;
+          transform: scale(1.3);
+        }
+      }
+      &:nth-child(3n){
+        img{
+          margin-top: 50vh;
+          transform: scale(1);
+          object-position: center right;
+        }
+      }
+      &:nth-child(1){
+        img{
+          margin-top: 10vh;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .work{
+      width: 100%;
+    }
+  }
+}
+
+.page{
+  max-width: calc(100% - 300px);
+  margin: 0 14px 0 auto;
+  padding-bottom: 48px;
+  @media only screen and (max-width: 600px) {
+    max-width: 100%;
+    margin-top: 120px;
+    padding: 0 14px 48px 14px;
+  }
+}
+
+.text-block{
+  max-width: 900px;
+  margin: auto;
+  .columns{
+    display: flex;
+    justify-content: space-between;
+    .column{
+      display: block;
+      width: 49%;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .columns{
+      flex-direction: column;
+      .column{
+        width: 100%;
+      }
+    }
+  }
+}
+
+.quote{
+  max-width: 900px;
+  margin: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  h3{
+    line-height: 1.5;
+    padding-left: 60px;
+  }
+}
+
+.image-section{
+  max-width: 900px;
+  margin: auto;
+  margin-top: 24px;
+  img{
+    width: 100%;
+    height: auto;
+  }
+  p{
+    text-align: right;
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+ol{
+  // padding-left: 100px;
+  padding-inline-start: 80px;
+}
+
+.page-img{
+  img{
+    position: fixed;
+    right: 0;
+    bottom: -25vh;
+    width: auto;
+    height: 90vh;
+    z-index: -1;
+    @media only screen and (max-width: 600px) {
+      // bottom: -50vh;
+      height: 70vh;
+      right: -20vw;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h2{
+    font-size: 24px;
   }
 }
