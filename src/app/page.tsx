@@ -5,6 +5,7 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { PrismicNextImage } from "@prismicio/next";
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
@@ -23,6 +24,36 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Page() {
   const client = createClient();
   const page = await client.getByUID("page", "home").catch(() => notFound());
+  const works = await client.getAllByType('work')
 
-  return <SliceZone slices={page.data.slices} components={components} />;
+  return (
+    <div className="home">
+      <div className="works">
+        {works.map((item,i ) => {
+          return(
+            <div className="work">
+              <PrismicNextImage field={item.data.image}/>
+              <div className="hover">
+                <PrismicNextImage field={item.data.hover_image}/>
+              </div>
+            </div>
+          )
+        })}
+         {works.map((item,i ) => {
+          return(
+            <div className="work">
+              <PrismicNextImage field={item.data.image}/>
+              <div className="hover">
+                <PrismicNextImage field={item.data.hover_image}/>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+      <div className="agenda-button">
+        agenda
+      </div>
+      <SliceZone slices={page.data.slices} components={components} />
+    </div>
+  )
 }
