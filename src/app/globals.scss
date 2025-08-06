@@ -30,6 +30,9 @@ h1, h2, h3{
 
 h1{
   font-size: 32px;
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+  }
 }
 
 h2{
@@ -112,10 +115,12 @@ p{
       z-index: 2;
       transition: all 0.4s ease;
     }
-    &:hover{
-      .hover{
-        visibility: visible;
-        opacity: 1;
+    @media only screen and (min-width: 600px) {
+      &:hover{
+        .hover{
+          visibility: visible;
+          opacity: 1;
+        }
       }
     }
   }
@@ -164,7 +169,7 @@ p{
   padding-bottom: 48px;
   @media only screen and (max-width: 600px) {
     max-width: 100%;
-    margin-top: 120px;
+    margin-top: 140px;
     padding: 0 14px 48px 14px;
   }
 }
