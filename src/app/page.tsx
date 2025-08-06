@@ -31,7 +31,7 @@ export default async function Page() {
       <div className="works">
         {works.map((item,i ) => {
           return(
-            <div className="work">
+            <div className="work" key={`work${i}`}>
               <PrismicNextImage field={item.data.image}/>
               <div className="hover">
                 <PrismicNextImage field={item.data.hover_image}/>
@@ -41,7 +41,7 @@ export default async function Page() {
         })}
          {works.map((item,i ) => {
           return(
-            <div className="work">
+            <div className="work" key={`work2${i}`}>
               <PrismicNextImage field={item.data.image}/>
               <div className="hover">
                 <PrismicNextImage field={item.data.hover_image}/>
