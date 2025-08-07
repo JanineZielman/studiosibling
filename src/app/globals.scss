@@ -26,6 +26,7 @@ body{
 
 h1, h2, h3{
   font-family: avara;
+  font-weight: 100;
 }
 
 h1{
@@ -47,8 +48,15 @@ h3{
   margin-bottom: -10px;
 }
 
+.subtitle{
+  font-size: 24px;
+  margin-top: 10px;
+  font-weight: 100;
+}
+
 p{
   line-height: 1.4;
+  font-size: 18px;
 }
 
 .menu{
@@ -92,6 +100,8 @@ p{
   padding: 24px;
   font-size: 20px;
   font-family: avara;
+  z-index: 9;
+  text-decoration: none;
 }
 
 .works{
@@ -203,6 +213,7 @@ p{
   h3{
     line-height: 1.5;
     padding-left: 60px;
+    margin-top: 10px;
   }
 }
 
@@ -238,6 +249,25 @@ ol{
       // bottom: -50vh;
       height: 70vh;
       right: -20vw;
+    }
+  }
+}
+
+.agenda{
+  max-width: 900px;
+  margin: auto;
+  h2{
+    margin-bottom: 14px;
+  }
+  .agenda-item{
+    display: flex;
+    justify-content: space-between;
+    div{
+      width: calc(100% - 220px);
+    }
+    .date{
+      text-align: right;
+      width: 180px;
     }
   }
 }

@@ -4,6 +4,89 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type AgendaDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Agenda documents
+ */
+interface AgendaDocumentData {
+  /**
+   * Title field in *Agenda*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agenda.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Date field in *Agenda*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agenda.date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date: prismic.DateField;
+
+  /**
+   * Slice Zone field in *Agenda*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agenda.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AgendaDocumentDataSlicesSlice> /**
+   * Meta Title field in *Agenda*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: agenda.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Agenda*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: agenda.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Agenda*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agenda.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Agenda document from Prismic
+ *
+ * - **API ID**: `agenda`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AgendaDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<AgendaDocumentData>, "agenda", Lang>;
+
 type CoachingDocumentDataSlicesSlice = TextBlockSlice | ImageSlice | QuoteSlice;
 
 /**
@@ -102,21 +185,6 @@ export type CoachingDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Item in *Homepage → Works and Coachings*
- */
-export interface HomepageDocumentDataWorksAndCoachingsItem {
-  /**
-   * Item field in *Homepage → Works and Coachings*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.works_and_coachings[].item
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  item: prismic.ContentRelationshipField<"coaching" | "work">;
-}
-
 type HomepageDocumentDataSlicesSlice = never;
 
 /**
@@ -133,19 +201,6 @@ interface HomepageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.TitleField;
-
-  /**
-   * Works and Coachings field in *Homepage*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.works_and_coachings[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  works_and_coachings: prismic.GroupField<
-    Simplify<HomepageDocumentDataWorksAndCoachingsItem>
-  >;
 
   /**
    * Slice Zone field in *Homepage*
@@ -396,6 +451,17 @@ interface WorkDocumentData {
   title: prismic.KeyTextField;
 
   /**
+   * Subtitle field in *Work*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
    * Image field in *Work*
    *
    * - **Field Type**: Image
@@ -416,6 +482,28 @@ interface WorkDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   hover_image: prismic.ImageField<never>;
+
+  /**
+   * Hero Image field in *Work*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.hero_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_image: prismic.ImageField<never>;
+
+  /**
+   * Hero Image Caption field in *Work*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.hero_image_caption
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  hero_image_caption: prismic.RichTextField;
 
   /**
    * Slice Zone field in *Work*
@@ -473,6 +561,7 @@ export type WorkDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<WorkDocumentData>, "work", Lang>;
 
 export type AllDocumentTypes =
+  | AgendaDocument
   | CoachingDocument
   | HomepageDocument
   | NavigationDocument
@@ -687,12 +776,14 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AgendaDocument,
+      AgendaDocumentData,
+      AgendaDocumentDataSlicesSlice,
       CoachingDocument,
       CoachingDocumentData,
       CoachingDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,
-      HomepageDocumentDataWorksAndCoachingsItem,
       HomepageDocumentDataSlicesSlice,
       NavigationDocument,
       NavigationDocumentData,

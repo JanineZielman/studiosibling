@@ -6,6 +6,7 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { PrismicNextImage } from "@prismicio/next";
+import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
@@ -50,9 +51,9 @@ export default async function Page() {
           )
         })}
       </div>
-      <div className="agenda-button">
+      <Link href="/agenda" className="agenda-button">
         agenda
-      </div>
+      </Link>
       <SliceZone slices={page.data.slices} components={components} />
     </div>
   )
