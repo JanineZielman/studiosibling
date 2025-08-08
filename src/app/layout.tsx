@@ -1,11 +1,8 @@
 import "./globals.scss";
 
-import { asText } from "@prismicio/client";
 import { PrismicText } from "@prismicio/react";
 import { PrismicNextLink, PrismicPreview } from "@prismicio/next";
-
 import { createClient, repositoryName } from "@/prismicio";
-import { Bounded } from "@/components/Bounded";
 
 export default async function RootLayout({
   children,
@@ -21,28 +18,22 @@ export default async function RootLayout({
   );
 }
 
+import Menu from "@/components/Menu";
+
 async function Header() {
   const client = createClient();
   const settings = await client.getSingle("settings");
   const navigation = await client.getSingle("navigation");
+  const works = await client.getAllByType('work');
+  const coachings = await client.getAllByType('coaching');
 
   return (
+    <div className="menu">
+      <PrismicNextLink href="/" className="site-title">
+        <h1><PrismicText field={settings.data.siteTitle} /></h1>
+      </PrismicNextLink>
 
-      <div className="menu">
-        <PrismicNextLink
-          href="/"
-          className="site-title"
-        >
-          <h1><PrismicText field={settings.data.siteTitle} /></h1>
-        </PrismicNextLink>
-        <nav>
-          {navigation.data?.links.map((item) => (
-            <PrismicNextLink field={item.link} key={asText(item.label)}>
-              <PrismicText field={item.label} />
-            </PrismicNextLink>
-          ))}
-        </nav>
-      </div>
-
+      <Menu navigation={navigation} works={works} coachings={coachings} />
+    </div>
   );
 }
