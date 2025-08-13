@@ -1,0 +1,35 @@
+{
+  "id": "embed",
+  "type": "SharedSlice",
+  "name": "Embed",
+  "description": "Embed",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "embed_link": {
+          "type": "Embed",
+          "config": {
+            "label": "Embed Link",
+            "placeholder": ""
+          }
+        },
+        "caption": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Caption",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,hyperlink,strong,em"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -65,11 +65,24 @@
           "multi": "paragraph,strong,em,hyperlink"
         }
       },
+      "date": {
+        "type": "Date",
+        "config": {
+          "label": "Date (for order)",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "image_slider": {
+              "type": "SharedSlice"
+            },
+            "embed": {
+              "type": "SharedSlice"
+            },
             "text_block": {
               "type": "SharedSlice"
             },

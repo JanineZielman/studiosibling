@@ -37,6 +37,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "image_slider": {
+              "type": "SharedSlice"
+            },
+            "embed": {
+              "type": "SharedSlice"
+            },
             "image": {
               "type": "SharedSlice"
             },

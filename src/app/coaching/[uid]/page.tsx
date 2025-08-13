@@ -4,6 +4,8 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@/components/PrismicRichText";
 
 type Params = { uid: string };
 
@@ -31,7 +33,19 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const client = createClient();
   const page = await client.getByUID("coaching", uid).catch(() => notFound());
 
-  return <SliceZone slices={page.data.slices} components={components} />;
+  return (
+    <div className="page">
+      <div  className="image-section">
+        <PrismicNextImage field={page.data.hero_image}/>
+        <PrismicRichText field={page.data.hero_image_caption}/>
+      </div>
+      <div className="text-block">
+        <h2>{page.data.title}</h2>
+        <p className="subtitle">{page.data.subtitle}</p>
+      </div>
+      <SliceZone slices={page.data.slices} components={components} />
+    </div>
+  )
 }
 
 export async function generateStaticParams() {

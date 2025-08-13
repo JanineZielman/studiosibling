@@ -21,7 +21,9 @@
     "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sass": "^1.90.0"
+    "react-slick": "^0.31.0",
+    "sass": "^1.90.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.78",
@@ -30,6 +32,7 @@
     "@types/node": "^22.12.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
+    "@types/react-slick": "^0.23.13",
     "concurrently": "^9.1.2",
     "eslint": "^9.19.0",
     "eslint-config-next": "^15.1.6",

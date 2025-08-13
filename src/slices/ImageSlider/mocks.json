@@ -1,0 +1,59 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"item": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab",
+										"width": 12288,
+										"height": 16384
+									},
+									"url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab?rect=0%2C0%2C12288%2C16384&w=1080&h=1440",
+									"width": 1080,
+									"height": 1440,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"alt": "rays",
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"caption",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Fugiat culpa mollit ipsum fugiat est labore deserunt amet sunt ullamco adipisicing commodo. Quis quis pariatur nostrud aute ipsum. Nulla nisi velit adipisicing ut Lorem cillum cillum duis esse anim sit nostrud deserunt commodo voluptate."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

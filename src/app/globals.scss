@@ -16,11 +16,14 @@ body,html{
   overflow-x: hidden;
 }
 
+
 body{
   background-color: $lightblue;
   font-family: adelle;
   color: $blue;
   margin: 0;
+  height: 100%;
+  min-height: 100vh;
   // max-height: 100vh;
 }
 
@@ -189,7 +192,12 @@ p{
       }
       &:nth-child(1){
         img{
-          margin-top: 10vh;
+          margin-top: -10vh;
+        }
+      }
+      &:nth-child(2){
+        img{
+          margin-top: -10vh;
         }
       }
     }
@@ -296,6 +304,40 @@ ol{
     .date{
       text-align: right;
       width: 180px;
+    }
+  }
+}
+
+.embed{
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  iframe{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+  p{
+    font-size: 14px;
+    margin-top: 0;
+    text-align: right;
+  }
+}
+
+.imageSlider{
+  width: 100%;
+  max-width: 900px;
+  margin: 14px auto;
+  p{
+    font-size: 14px;
+    margin-top: 0;
+  }
+  .imageSlide{
+    padding: 0 10px;
+    box-sizing: border-box;
+    img{
+      width: 100%;
+      height: auto;
     }
   }
 }

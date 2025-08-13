@@ -19,6 +19,13 @@
           "placeholder": ""
         }
       },
+      "subtitle": {
+        "type": "Text",
+        "config": {
+          "label": "Subtitle",
+          "placeholder": ""
+        }
+      },
       "image": {
         "type": "Image",
         "config": {
@@ -39,11 +46,43 @@
           "thumbnails": []
         }
       },
+      "hero_image": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Image",
+          "constraint": {
+            "width": 1920
+          },
+          "thumbnails": []
+        }
+      },
+      "hero_image_caption": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Hero Image Caption",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,hyperlink,strong,em,list-item,o-list-item"
+        }
+      },
+      "date": {
+        "type": "Date",
+        "config": {
+          "label": "Date (for order)",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "image_slider": {
+              "type": "SharedSlice"
+            },
+            "embed": {
+              "type": "SharedSlice"
+            },
             "text_block": {
               "type": "SharedSlice"
             },

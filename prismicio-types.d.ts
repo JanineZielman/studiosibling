@@ -33,6 +33,17 @@ interface AgendaDocumentData {
   date: prismic.DateField;
 
   /**
+   * Link field in *Agenda*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agenda.link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
    * Slice Zone field in *Agenda*
    *
    * - **Field Type**: Slice Zone
@@ -87,7 +98,12 @@ interface AgendaDocumentData {
 export type AgendaDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<AgendaDocumentData>, "agenda", Lang>;
 
-type CoachingDocumentDataSlicesSlice = TextBlockSlice | ImageSlice | QuoteSlice;
+type CoachingDocumentDataSlicesSlice =
+  | ImageSliderSlice
+  | EmbedSlice
+  | TextBlockSlice
+  | ImageSlice
+  | QuoteSlice;
 
 /**
  * Content for Coaching documents
@@ -103,6 +119,17 @@ interface CoachingDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *Coaching*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
 
   /**
    * Image field in *Coaching*
@@ -125,6 +152,39 @@ interface CoachingDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   hover_image: prismic.ImageField<never>;
+
+  /**
+   * Hero Image field in *Coaching*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.hero_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_image: prismic.ImageField<never>;
+
+  /**
+   * Hero Image Caption field in *Coaching*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.hero_image_caption
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  hero_image_caption: prismic.RichTextField;
+
+  /**
+   * Date (for order) field in *Coaching*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date: prismic.DateField;
 
   /**
    * Slice Zone field in *Coaching*
@@ -318,7 +378,12 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = ImageSlice | TextBlockSlice | QuoteSlice;
+type PageDocumentDataSlicesSlice =
+  | ImageSliderSlice
+  | EmbedSlice
+  | ImageSlice
+  | TextBlockSlice
+  | QuoteSlice;
 
 /**
  * Content for Page documents
@@ -433,7 +498,12 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-type WorkDocumentDataSlicesSlice = TextBlockSlice | QuoteSlice | ImageSlice;
+type WorkDocumentDataSlicesSlice =
+  | ImageSliderSlice
+  | EmbedSlice
+  | TextBlockSlice
+  | QuoteSlice
+  | ImageSlice;
 
 /**
  * Content for Work documents
@@ -506,6 +576,17 @@ interface WorkDocumentData {
   hero_image_caption: prismic.RichTextField;
 
   /**
+   * Date (for order) field in *Work*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date: prismic.DateField;
+
+  /**
    * Slice Zone field in *Work*
    *
    * - **Field Type**: Slice Zone
@@ -570,6 +651,58 @@ export type AllDocumentTypes =
   | WorkDocument;
 
 /**
+ * Primary content in *Embed → Default → Primary*
+ */
+export interface EmbedSliceDefaultPrimary {
+  /**
+   * Embed Link field in *Embed → Default → Primary*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: embed.default.primary.embed_link
+   * - **Documentation**: https://prismic.io/docs/field#embed
+   */
+  embed_link: prismic.EmbedField;
+
+  /**
+   * Caption field in *Embed → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: embed.default.primary.caption
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  caption: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Embed Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EmbedSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<EmbedSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Embed*
+ */
+type EmbedSliceVariation = EmbedSliceDefault;
+
+/**
+ * Embed Shared Slice
+ *
+ * - **API ID**: `embed`
+ * - **Description**: Embed
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EmbedSlice = prismic.SharedSlice<"embed", EmbedSliceVariation>;
+
+/**
  * Primary content in *Image → Default → Primary*
  */
 export interface ImageSliceDefaultPrimary {
@@ -620,6 +753,76 @@ type ImageSliceVariation = ImageSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type ImageSlice = prismic.SharedSlice<"image", ImageSliceVariation>;
+
+/**
+ * Item in *ImageSlider → Default → Primary → Item*
+ */
+export interface ImageSliderSliceDefaultPrimaryItemItem {
+  /**
+   * Image field in *ImageSlider → Default → Primary → Item*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_slider.default.primary.item[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Caption field in *ImageSlider → Default → Primary → Item*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_slider.default.primary.item[].caption
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  caption: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ImageSlider → Default → Primary*
+ */
+export interface ImageSliderSliceDefaultPrimary {
+  /**
+   * Item field in *ImageSlider → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_slider.default.primary.item[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  item: prismic.GroupField<Simplify<ImageSliderSliceDefaultPrimaryItemItem>>;
+}
+
+/**
+ * Default variation for ImageSlider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSliderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageSliderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ImageSlider*
+ */
+type ImageSliderSliceVariation = ImageSliderSliceDefault;
+
+/**
+ * ImageSlider Shared Slice
+ *
+ * - **API ID**: `image_slider`
+ * - **Description**: ImageSlider
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSliderSlice = prismic.SharedSlice<
+  "image_slider",
+  ImageSliderSliceVariation
+>;
 
 /**
  * Primary content in *Quote → Default → Primary*
@@ -797,10 +1000,19 @@ declare module "@prismicio/client" {
       WorkDocumentData,
       WorkDocumentDataSlicesSlice,
       AllDocumentTypes,
+      EmbedSlice,
+      EmbedSliceDefaultPrimary,
+      EmbedSliceVariation,
+      EmbedSliceDefault,
       ImageSlice,
       ImageSliceDefaultPrimary,
       ImageSliceVariation,
       ImageSliceDefault,
+      ImageSliderSlice,
+      ImageSliderSliceDefaultPrimaryItemItem,
+      ImageSliderSliceDefaultPrimary,
+      ImageSliderSliceVariation,
+      ImageSliderSliceDefault,
       QuoteSlice,
       QuoteSliceDefaultPrimary,
       QuoteSliceVariation,
