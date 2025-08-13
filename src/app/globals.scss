@@ -21,8 +21,17 @@ body{
   font-family: adelle;
   color: $blue;
   margin: 0;
-  max-height: 100vh;
+  // max-height: 100vh;
 }
+
+body {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // transition: all 0.4s linear;
+}
+
+
 
 h1, h2, h3{
   font-family: avara;

@@ -40,16 +40,6 @@ export default async function Page() {
             </a>
           )
         })}
-         {works.map((item,i ) => {
-          return(
-            <a href={`/work/${item.uid}`} className="work" key={`work2${i}`}>
-              <PrismicNextImage field={item.data.image}/>
-              <div className="hover">
-                <PrismicNextImage field={item.data.hover_image}/>
-              </div>
-            </a>
-          )
-        })}
       </div>
       <Link href="/agenda" className="agenda-button">
         agenda
