@@ -498,6 +498,31 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Work → Hero Images*
+ */
+export interface WorkDocumentDataHeroImagesItem {
+  /**
+   * Image field in *Work → Hero Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.hero_images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Caption field in *Work → Hero Images*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.hero_images[].caption
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  caption: prismic.RichTextField;
+}
+
 type WorkDocumentDataSlicesSlice =
   | ImageSliderSlice
   | EmbedSlice
@@ -563,6 +588,17 @@ interface WorkDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   hero_image: prismic.ImageField<never>;
+
+  /**
+   * Hero Images field in *Work*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.hero_images[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  hero_images: prismic.GroupField<Simplify<WorkDocumentDataHeroImagesItem>>;
 
   /**
    * Hero Image Caption field in *Work*
@@ -792,6 +828,17 @@ export interface ImageSliderSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   item: prismic.GroupField<Simplify<ImageSliderSliceDefaultPrimaryItemItem>>;
+
+  /**
+   * Slides to show field in *ImageSlider → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 1
+   * - **API ID Path**: image_slider.default.primary.slides_to_show
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  slides_to_show: prismic.SelectField<"1" | "2" | "3", "filled">;
 }
 
 /**
@@ -998,6 +1045,7 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       WorkDocument,
       WorkDocumentData,
+      WorkDocumentDataHeroImagesItem,
       WorkDocumentDataSlicesSlice,
       AllDocumentTypes,
       EmbedSlice,

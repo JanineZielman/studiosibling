@@ -39,6 +39,19 @@
               }
             }
           }
+        },
+        "slides_to_show": {
+          "type": "Select",
+          "config": {
+            "label": "Slides to show",
+            "placeholder": "",
+            "options": [
+              "1",
+              "2",
+              "3"
+            ],
+            "default_value": "1"
+          }
         }
       },
       "items": {}

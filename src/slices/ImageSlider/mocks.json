@@ -52,6 +52,11 @@
 						]
 					}
 				]
+			},
+			"slides_to_show": {
+				"__TYPE__": "FieldContent",
+				"value": "1",
+				"type": "Select"
 			}
 		},
 		"items": []

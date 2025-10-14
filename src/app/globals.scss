@@ -13,6 +13,10 @@ body,html{
   overflow-x: hidden;
 }
 
+*:focus {
+    outline: none;
+}
+
 body{
   background-color: $lightblue;
   font-family: "adelle-sans-ultra-thin", sans-serif;
@@ -154,6 +158,7 @@ p{
   // margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   .work{
     img{
       // max-height: 80vh;
@@ -185,7 +190,7 @@ p{
     .work{
       position: relative;
       transition: all 0.4s ease;
-      width: 33%;
+      width: 30%;
       height: fit-content;
       &:nth-child(3n + 1){
         img{
@@ -362,6 +367,7 @@ ol{
   width: 80%;
   max-width: 900px;
   margin: 14px auto;
+  padding-bottom: 24px;
   p{
     font-size: 14px;
     margin-top: 0;

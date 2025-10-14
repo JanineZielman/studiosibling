@@ -15,12 +15,18 @@ import "slick-carousel/slick/slick-theme.css";
 export type ImageSliderProps = SliceComponentProps<Content.ImageSliderSlice>;
 
 const ImageSlider: FC<ImageSliderProps> = ({ slice }) => {
+  // Convert to number and provide a fallback
+  const slidesToShow =
+    Number(slice.primary.slides_to_show) > 0
+      ? Number(slice.primary.slides_to_show)
+      : 1;
+
   const settings = {
     dots: true,
     arrows: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -28,7 +34,7 @@ const ImageSlider: FC<ImageSliderProps> = ({ slice }) => {
       {
         breakpoint: 1024, // tablet & small desktops
         settings: {
-          slidesToShow: 2,
+          slidesToShow: Math.min(slidesToShow, 2),
         },
       },
       {
