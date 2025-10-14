@@ -8,6 +8,9 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/qbn0cgq.css"></link>
+      </head>
       <body className="overflow-x-hidden antialiased">
         <Header />
         {children}

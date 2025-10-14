@@ -1,30 +1,27 @@
 $lightblue:  #1d427e;
-$blue: #07FF00;
+$blue: #06ff3b;
+$light: rgb(199,234,245);
 
 @font-face {
   font-family: gogh;
   src: url('./Gogh-ExtraBold.woff2');
 }
 
-@font-face {
-  font-family: adelle;
-  src: url('./AdelleSans.ttc');
-}
-
 body,html{
   width: 100%;
+  height: 100%;
   overflow-x: hidden;
 }
 
-
 body{
   background-color: $lightblue;
-  font-family: adelle;
+  font-family: "adelle-sans-ultra-thin", sans-serif;
+  font-weight: 200;
+  font-style: normal;
   color: $blue;
   margin: 0;
   height: 100%;
   min-height: 100vh;
-  // max-height: 100vh;
 }
 
 body {
@@ -38,11 +35,17 @@ body {
 
 h1, h2, h3{
   font-family: gogh;
-  font-weight: 100;
+  // font-weight: 100;
+}
+
+p strong{
+  font-family: adelle-sans, sans-serif;
+  font-weight: 300;
 }
 
 h1{
   font-size: 32px;
+  color: $blue;
   @media only screen and (max-width: 600px) {
     font-size: 24px;
   }
@@ -53,11 +56,13 @@ h2{
   margin-top: 36px;
   margin-bottom: -10px;
   font-size: 32px;
+  color: $blue;
 }
 
 h3{
   margin-top: 36px;
-  margin-bottom: -10px;
+  // margin-bottom: -10px;
+  color: $blue;
 }
 
 .subtitle{
@@ -69,6 +74,7 @@ h3{
 p{
   line-height: 1.4;
   font-size: 18px;
+  font-weight: 100;
 }
 
 .menu{
@@ -84,7 +90,6 @@ p{
     text-decoration: none;
     color: $blue;
     text-transform: lowercase;
-    font-weight: 300;
     font-family: gogh;
     display: block;
     &:hover{
@@ -98,9 +103,12 @@ p{
     margin-left: 24px;
     margin-bottom: 5px;
     a{
-      font-family: adelle;
+      font-family: "adelle-sans-ultra-thin", sans-serif;
       line-height: 1.2;
       text-transform: inherit;
+       &:hover{
+          font-family: "adelle-sans-ultra-thin-italic", sans-serif;
+        }
     }
   }
   @media only screen and (max-width: 600px) {
@@ -131,14 +139,15 @@ p{
   z-index: 9;
   text-decoration: none;
   transition: 0.4s ease;
-  animation: rotate 5s infinite linear;
+  animation: rotate 3s infinite linear;
   &:hover{
     font-size: 25px;
   }
 }
 
 @keyframes rotate {
-  100% {transform: rotate(360deg);}
+  50% {transform: scale(1.1);}
+  100% {transform: scale(1);}
 }
 
 .works{
@@ -236,9 +245,15 @@ p{
   }
 }
 
+h2, .subtitle{
+  color: $blue;
+}
+
 .text-block{
+  width: 80%;
   max-width: 900px;
   margin: auto;
+  color: $light;
   .columns{
     display: flex;
     justify-content: space-between;
@@ -258,6 +273,7 @@ p{
 }
 
 .quote{
+  width: 80%;
   max-width: 900px;
   margin: auto;
   padding-top: 5px;
@@ -270,6 +286,7 @@ p{
 }
 
 .image-section{
+  width: 80%;
   max-width: 900px;
   margin: auto;
   margin-top: 24px;
@@ -306,6 +323,7 @@ ol{
 }
 
 .agenda{
+  width: 80%;
   max-width: 900px;
   margin: auto;
   h2{
@@ -325,7 +343,7 @@ ol{
 }
 
 .embed{
-  width: 100%;
+  width: 80%;
   max-width: 900px;
   margin: auto;
   iframe{
@@ -341,7 +359,7 @@ ol{
 }
 
 .imageSlider{
-  width: 100%;
+  width: 80%;
   max-width: 900px;
   margin: 14px auto;
   p{
@@ -355,6 +373,12 @@ ol{
       width: 100%;
       height: auto;
     }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .imageSlider, .embed, .agenda, .quote, .image-section, .text-block{
+    width: 100%;
   }
 }
 
