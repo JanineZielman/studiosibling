@@ -2,7 +2,6 @@ import "./globals.scss";
 import { PrismicText } from "@prismicio/react";
 import { PrismicNextLink, PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
-import GradientScrollEffect from "@/components/GradientScrollEffect";
 
 export default async function RootLayout({
   children,
@@ -10,7 +9,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="overflow-x-hidden antialiased">
-        <GradientScrollEffect />
         <Header />
         {children}
         <PrismicPreview repositoryName={repositoryName} />

@@ -1,9 +1,9 @@
-$lightblue: #d5edf7;
-$blue: #1b1c56;
+$lightblue:  #1d427e;
+$blue: #07FF00;
 
 @font-face {
-  font-family: avara;
-  src: url('./Avara-BoldItalic.otf');
+  font-family: gogh;
+  src: url('./Gogh-ExtraBold.woff2');
 }
 
 @font-face {
@@ -37,7 +37,7 @@ body {
 
 
 h1, h2, h3{
-  font-family: avara;
+  font-family: gogh;
   font-weight: 100;
 }
 
@@ -85,7 +85,7 @@ p{
     color: $blue;
     text-transform: lowercase;
     font-weight: 300;
-    font-family: avara;
+    font-family: gogh;
     display: block;
     &:hover{
       font-style: italic;
@@ -100,6 +100,7 @@ p{
     a{
       font-family: adelle;
       line-height: 1.2;
+      text-transform: inherit;
     }
   }
   @media only screen and (max-width: 600px) {
@@ -126,17 +127,22 @@ p{
   border-radius: 50%;
   padding: 24px;
   font-size: 20px;
-  font-family: avara;
+  font-family: gogh;
   z-index: 9;
   text-decoration: none;
   transition: 0.4s ease;
+  animation: rotate 5s infinite linear;
   &:hover{
-    transform: scale(1.1);
+    font-size: 25px;
   }
 }
 
+@keyframes rotate {
+  100% {transform: rotate(360deg);}
+}
+
 .works{
-  margin-top: 100px;
+  // margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
   .work{
@@ -146,6 +152,7 @@ p{
       height: 100%;
       object-fit: contain;
       object-position: left top;
+      transform-origin: center;
     }
     .hover{
       visibility: hidden;
@@ -156,14 +163,14 @@ p{
       z-index: 2;
       transition: all 0.4s ease;
     }
-    @media only screen and (min-width: 600px) {
-      &:hover{
-        .hover{
-          visibility: visible;
-          opacity: 1;
-        }
-      }
-    }
+    // @media only screen and (min-width: 600px) {
+    //   &:hover{
+    //     .hover{
+    //       visibility: visible;
+    //       opacity: 1;
+    //     }
+    //   }
+    // }
   }
   @media only screen and (min-width: 600px) {
     .work{
@@ -173,21 +180,30 @@ p{
       height: fit-content;
       &:nth-child(3n + 1){
         img{
-          margin-top: -50vh;
+          margin-top: -55vh;
           transform: scale(0.8);
+        }
+        &:hover{
+          transform: scale(1.1) rotate(10deg);
         }
       }
       &:nth-child(3n + 2){
         img{
-          margin-top: -30vh;
-          transform: scale(1.3);
+          margin-top: -35vh;
+          transform: scale(1.5);
+        }
+        &:hover{
+          transform: scale(1.1) rotate(-10deg);
         }
       }
       &:nth-child(3n){
         img{
           margin-top: 50vh;
-          transform: scale(1);
+          transform: scale(1.1);
           object-position: center right;
+        }
+        &:hover{
+          transform: scale(1.1) rotate(10deg);
         }
       }
       &:nth-child(1){
@@ -197,7 +213,7 @@ p{
       }
       &:nth-child(2){
         img{
-          margin-top: -10vh;
+          margin-top: -6vh;
         }
       }
     }
