@@ -41,7 +41,6 @@ export default async function Page() {
     const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
     return dateB - dateA;
   });
-  
 
   return (
     <div className="home">
