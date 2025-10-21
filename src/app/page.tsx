@@ -49,6 +49,7 @@ export default async function Page() {
         {sortedItems.map((item, i) => {
           if (item.type === "work") {
             return (
+              item.data.image.url &&
               <a href={`/work/${item.uid}`} className="work" key={i}>
                 <PrismicNextImage field={item.data.image} />
                 <div className="hover">
@@ -58,6 +59,7 @@ export default async function Page() {
             );
           } else {
             return (
+              item.data.image.url &&
               <a href={`/coaching/${item.uid}`} className="work" key={i}>
                 <PrismicNextImage field={item.data.image} />
                 <div className="hover">
