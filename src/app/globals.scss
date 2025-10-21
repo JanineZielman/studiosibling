@@ -206,7 +206,7 @@ p{
       &:nth-child(3n + 1){
         img{
           margin-top: 45vh;
-          transform: scale(0.6);
+          transform: scale(0.8);
         }
         &:hover{
           transform: scale(1) rotate(10deg);
@@ -214,7 +214,7 @@ p{
       }
       &:nth-child(3n + 2){
         img{
-          margin-top: -15vh;
+          margin-top: -35vh;
           transform: scale(1);
         }
         &:hover{
@@ -223,7 +223,7 @@ p{
       }
       &:nth-child(3n){
         img{
-          // margin-top: 50vh;
+          margin-top: 50vh;
           transform: scale(0.9);
           object-position: center right;
         }
@@ -234,7 +234,6 @@ p{
       &:nth-child(1){
         img{
           margin-top: 50vh;
-          transform: scale(1);
         }
       }
       &:nth-child(2){
