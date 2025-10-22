@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import { createClient } from "@/prismicio";
+import { PrismicNextLink } from "@prismicio/next";
+
 
 export async function generateMetadata() {
   const client = createClient();
@@ -28,6 +30,8 @@ export default async function Page() {
   const client = createClient();
   const agenda = await client.getAllByType('agenda');
 
+  console.log(agenda)
+
   const now = new Date();
 
   const upcomingAgenda = agenda
@@ -46,10 +50,18 @@ export default async function Page() {
           <p>No upcoming events.</p>
         ) : (
           upcomingAgenda.map((item, i) => (
-            <div key={i} className="agenda-item">
-              <div className="date">{formatDutchDate(item.data.date)}</div>
-              <div>{item.data.title}</div>
-            </div>
+            item.data.link.text ?
+              <PrismicNextLink field={item.data.link}>
+                <div key={i} className="agenda-item">
+                  <div className="date">{formatDutchDate(item.data.date)}</div>
+                  <div>{item.data.title}</div>
+                </div>
+              </PrismicNextLink>
+              :
+              <div key={i} className="agenda-item">
+                <div className="date">{formatDutchDate(item.data.date)}</div>
+                <div>{item.data.title}</div>
+              </div>
           ))
         )}
 
@@ -58,9 +70,17 @@ export default async function Page() {
           <p>No past events.</p>
         ) : (
           pastAgenda.map((item, i) => (
+            item.data.link.text ?
+              <PrismicNextLink field={item.data.link}>
+                <div key={i} className="agenda-item">
+                    <div className="date">{formatDutchDate(item.data.date)}</div>
+                    <div>{item.data.title}</div>
+                </div>
+              </PrismicNextLink>
+            :
             <div key={i} className="agenda-item">
-              <div className="date">{formatDutchDate(item.data.date)}</div>
-              <div>{item.data.title}</div>
+                <div className="date">{formatDutchDate(item.data.date)}</div>
+                <div>{item.data.title}</div>
             </div>
           ))
         )}
