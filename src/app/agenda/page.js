@@ -51,7 +51,7 @@ export default async function Page() {
         ) : (
           upcomingAgenda.map((item, i) => (
             item.data.link.text ?
-              <PrismicNextLink field={item.data.link}>
+              <PrismicNextLink field={item.data.link} key={i} >
                 <div key={i} className="agenda-item">
                   <div className="date">{formatDutchDate(item.data.date)}</div>
                   <div>{item.data.title}</div>
@@ -71,7 +71,7 @@ export default async function Page() {
         ) : (
           pastAgenda.map((item, i) => (
             item.data.link.text ?
-              <PrismicNextLink field={item.data.link}>
+              <PrismicNextLink field={item.data.link} key={i} >
                 <div key={i} className="agenda-item">
                     <div className="date">{formatDutchDate(item.data.date)}</div>
                     <div>{item.data.title}</div>
