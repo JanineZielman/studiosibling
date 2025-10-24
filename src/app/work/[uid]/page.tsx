@@ -37,7 +37,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   return (
     <div className="page">
       <div  className="image-section">
-        {page.data.hero_images.length > 0 ?
+        {page.data.hero_images?.length > 0 ?
           <SliderComp items={page.data.hero_images}/>
         :
           <PrismicNextImage field={page.data.hero_image}/>

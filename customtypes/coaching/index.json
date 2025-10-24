@@ -65,10 +65,45 @@
           "multi": "paragraph,hyperlink,strong,em,list-item,o-list-item"
         }
       },
+      "hero_images": {
+        "type": "Group",
+        "config": {
+          "label": "Hero Images",
+          "repeat": true,
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {
+                  "width": 1920
+                },
+                "thumbnails": []
+              }
+            },
+            "caption": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Caption",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,hyperlink,list-item,o-list-item,strong,em"
+              }
+            }
+          }
+        }
+      },
       "date": {
         "type": "Date",
         "config": {
           "label": "Date (for order)",
+          "placeholder": ""
+        }
+      },
+      "scale": {
+        "type": "Number",
+        "config": {
+          "label": "Scale",
           "placeholder": ""
         }
       },

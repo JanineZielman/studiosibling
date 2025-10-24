@@ -98,6 +98,31 @@ interface AgendaDocumentData {
 export type AgendaDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<AgendaDocumentData>, "agenda", Lang>;
 
+/**
+ * Item in *Coaching → Hero Images*
+ */
+export interface CoachingDocumentDataHeroImagesItem {
+  /**
+   * Image field in *Coaching → Hero Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.hero_images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Caption field in *Coaching → Hero Images*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.hero_images[].caption
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  caption: prismic.RichTextField;
+}
+
 type CoachingDocumentDataSlicesSlice =
   | ImageSliderSlice
   | EmbedSlice
@@ -176,6 +201,17 @@ interface CoachingDocumentData {
   hero_image_caption: prismic.RichTextField;
 
   /**
+   * Hero Images field in *Coaching*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.hero_images[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  hero_images: prismic.GroupField<Simplify<CoachingDocumentDataHeroImagesItem>>;
+
+  /**
    * Date (for order) field in *Coaching*
    *
    * - **Field Type**: Date
@@ -185,6 +221,17 @@ interface CoachingDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#date
    */
   date: prismic.DateField;
+
+  /**
+   * Scale field in *Coaching*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.scale
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  scale: prismic.NumberField;
 
   /**
    * Slice Zone field in *Coaching*
@@ -590,17 +637,6 @@ interface WorkDocumentData {
   hero_image: prismic.ImageField<never>;
 
   /**
-   * Hero Images field in *Work*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: work.hero_images[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  hero_images: prismic.GroupField<Simplify<WorkDocumentDataHeroImagesItem>>;
-
-  /**
    * Hero Image Caption field in *Work*
    *
    * - **Field Type**: Rich Text
@@ -612,6 +648,17 @@ interface WorkDocumentData {
   hero_image_caption: prismic.RichTextField;
 
   /**
+   * Hero Images field in *Work*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.hero_images[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  hero_images: prismic.GroupField<Simplify<WorkDocumentDataHeroImagesItem>>;
+
+  /**
    * Date (for order) field in *Work*
    *
    * - **Field Type**: Date
@@ -621,6 +668,17 @@ interface WorkDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#date
    */
   date: prismic.DateField;
+
+  /**
+   * Scale field in *Work*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.scale
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  scale: prismic.NumberField;
 
   /**
    * Slice Zone field in *Work*
@@ -1031,6 +1089,7 @@ declare module "@prismicio/client" {
       AgendaDocumentDataSlicesSlice,
       CoachingDocument,
       CoachingDocumentData,
+      CoachingDocumentDataHeroImagesItem,
       CoachingDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,

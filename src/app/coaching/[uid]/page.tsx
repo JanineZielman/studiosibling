@@ -6,6 +6,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@/components/PrismicRichText";
+import SliderComp from "@/components/SliderComp";
 
 type Params = { uid: string };
 
@@ -35,8 +36,13 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
   return (
     <div className="page">
-      <div  className="image-section">
-        <PrismicNextImage field={page.data.hero_image}/>
+      <div className="image-section">
+        {page.data.hero_images?.length > 0 ?
+          <SliderComp items={page.data.hero_images}/>
+        :
+          <PrismicNextImage field={page.data.hero_image}/>
+        }
+        
         <PrismicRichText field={page.data.hero_image_caption}/>
       </div>
       <div className="text-block">

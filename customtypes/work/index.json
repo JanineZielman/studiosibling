@@ -56,6 +56,15 @@
           "thumbnails": []
         }
       },
+      "hero_image_caption": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Hero Image Caption",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,hyperlink"
+        }
+      },
       "hero_images": {
         "type": "Group",
         "config": {
@@ -84,19 +93,17 @@
           }
         }
       },
-      "hero_image_caption": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Hero Image Caption",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,strong,em,hyperlink"
-        }
-      },
       "date": {
         "type": "Date",
         "config": {
           "label": "Date (for order)",
+          "placeholder": ""
+        }
+      },
+      "scale": {
+        "type": "Number",
+        "config": {
+          "label": "Scale",
           "placeholder": ""
         }
       },

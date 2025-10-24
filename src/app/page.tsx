@@ -50,7 +50,7 @@ export default async function Page() {
             return (
               item.data.image.url &&
               <a href={`/work/${item.uid}`} className="work" key={i}>
-                <PrismicNextImage field={item.data.image} />
+                <PrismicNextImage field={item.data.image} style={{transform: `scale(${item.data.scale})`}} />
                 <div className="hover">
                   <PrismicNextImage field={item.data.hover_image} />
                 </div>
@@ -60,7 +60,7 @@ export default async function Page() {
             return (
               item.data.image.url &&
               <a href={`/coaching/${item.uid}`} className="work" key={i}>
-                <PrismicNextImage field={item.data.image} />
+                <PrismicNextImage field={item.data.image} style={{transform: `scale(${item.data.scale})`}} />
                 <div className="hover">
                   <PrismicNextImage field={item.data.hover_image} />
                 </div>
